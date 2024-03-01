@@ -75,7 +75,7 @@ require 'ceklogin.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>Name</th>
                                             <th>Posisi</th>
                                             <th>Kantor</th>
                                             <th>Usia</th>
