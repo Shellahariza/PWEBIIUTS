@@ -60,7 +60,7 @@ require 'ceklogin.php';
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Informasi lainnya</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Tampilkan lainnnya</a>
+                                        <a class="small text-white stretched-link" href="#">Tampilkan Lainnya</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -75,18 +75,22 @@ require 'ceklogin.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>id_order</th>
-                                            <th>id_user</th>
-                                            <th>Tanggal</th>
-                                            <th>id_pelanggan</th>
+                                            <th>Nama</th>
+                                            <th>Posisi</th>
+                                            <th>Kantor</th>
+                                            <th>Usia</th>
+                                            <th>Tahun mulai</th>
+                                            <th>Gaji</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>0903</td>
-                                            <td>128</td>
-                                            <td>2024/03/01</td>
-                                            <td>10</td>
+                                            <td>Abdul Budi</td>
+                                            <td>System Architect</td>
+                                            <td>Padang</td>
+                                            <td>37</td>
+                                            <td>2016/04/25</td>
+                                            <td>Rp. 25.000.000</td>
                                         </tr>
                                     </tbody>
                                 </table>
