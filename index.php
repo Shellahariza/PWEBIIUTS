@@ -1,3 +1,7 @@
+<?php
+require 'ceklogin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
