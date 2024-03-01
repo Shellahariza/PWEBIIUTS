@@ -75,22 +75,18 @@ require 'ceklogin.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
-                                            <th>Posisi</th>
-                                            <th>Kantor</th>
-                                            <th>Usia</th>
-                                            <th>Tahun mulai</th>
-                                            <th>Gaji</th>
+                                            <th>id_order</th>
+                                            <th>id_user</th>
+                                            <th>Tanggal</th>
+                                            <th>id_pelanggan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Abdul Budi</td>
-                                            <td>System Architect</td>
-                                            <td>Padang</td>
-                                            <td>37</td>
-                                            <td>2016/04/25</td>
-                                            <td>Rp. 25.000.000</td>
+                                            <td>0903</td>
+                                            <td>128</td>
+                                            <td>2024/03/01</td>
+                                            <td>10</td>
                                         </tr>
                                     </tbody>
                                 </table>
