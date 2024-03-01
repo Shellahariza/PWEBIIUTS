@@ -69,28 +69,28 @@ require 'ceklogin.php';
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                Contoh Database
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Nama</th>
+                                            <th>Posisi</th>
+                                            <th>Kantor</th>
+                                            <th>Usia</th>
+                                            <th>Tahun mulai</th>
+                                            <th>Gaji</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
+                                            <td>Abdul Budi</td>
                                             <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>Padang</td>
+                                            <td>37</td>
+                                            <td>2016/04/25</td>
+                                            <td>Rp. 25.000.000</td>
                                         </tr>
                                     </tbody>
                                 </table>
