@@ -117,7 +117,7 @@ require 'function.php';
                                         </td>
                                         </tr>
 
-                                        <!-- The ModalEdit -->
+                                        <!-- The Modal Edit -->
                                         <div class="modal fade" id="edit<?=$idproduk;?>">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -176,7 +176,6 @@ require 'function.php';
                                             </div>
                                             </div>
                                         </div>
-
 
 
                                     <?php
