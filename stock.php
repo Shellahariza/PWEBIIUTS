@@ -64,9 +64,9 @@ require 'function.php';
                         </div>
 
                         <!-- Button to Open the Modal -->
-                        <button type="button" class="btn btn-info mb-4" data-toggle="modal" data-target="#myModal">
-                            Tambah Barang Baru
-                        </button> 
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Tambah Barang Baru
+                        </button>
 
                         <div class="card mb-4">
                             <div class="card-header">
@@ -209,19 +209,19 @@ require 'function.php';
     </body>
 
 
-    <!-- The Modal -->
+   <!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
+      <form method="post">
+
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Tambah Barang Baru</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
-        <form method="post">
-
         <!-- Modal body -->
         <div class="modal-body">
           <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk">
@@ -239,6 +239,5 @@ require 'function.php';
       </div>
     </div>
   </div>
-
 
 </html>
