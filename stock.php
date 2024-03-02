@@ -131,9 +131,9 @@ require 'function.php';
 
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                <input type="text" name="namaproduk" class"form-control" placeholder="Nama Produk" value = <?=$namaproduk;?>>
-                                                <input type="text" name="deskripsi" class"form-control mt-2" placeholder="Deskripsi" value = <?=$deskripsi;?>>
-                                                <input type="num" name="harga" class"form-control mt-2" placeholder="Harga Produk" value = <?=$harga;?>>
+                                                <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value = <?=$namaproduk;?>>
+                                                <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi" value = <?=$deskripsi;?>>
+                                                <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk" value = <?=$harga;?>>
                                                 <input type = "hidden" name = "idp" value = "<?=$idproduk;?>" ?>
                                                 </div>
                                                 
