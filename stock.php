@@ -86,12 +86,34 @@ require 'function.php';
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                    <?php 
+                                    $get = mysqli_query($conn, "select * from produk")
+                                    $i = 1;
+
+                                    while($p=mysqli_fetch_array($get)) {
+                                    $namaproduk = $p['namaproduk']
+                                    $deskripsi = $p['deskripsi']
+                                    $harga = $p['harga']
+                                    $stock = $p['stock']
+
+                                    
+                                    ?>
                                         <tr>
-                                            <td>0903</td>
-                                            <td>128</td>
-                                            <td>2024/03/01</td>
-                                            <td>20</td>
+                                            <td><?=$i++;?></td>
+                                            <td><?=$namaproduk;?></td>
+                                            <td><?=$deskripsi;?></td>
+                                            <td><?=$stock;?></td>
+                                            <td><?=$harga;?></td>
+                                            <td>Edit Delete</td>
                                         </tr>
+
+                                    <?php
+                                    }; // akhir dari looping while tr
+
+                                    ?>
+
+
                                     </tbody>
                                 </table>
                             </div>

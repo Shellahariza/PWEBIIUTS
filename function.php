@@ -24,7 +24,29 @@ if(isset($_POST['login'])){
         <script>alert("Username atau Password salah");
         window.location.href="login.php"
         </script>
-        ';
+        '; 
     }
 }
+
+
+
+if (isset($_POST['tambahbarang']))
+    $namaproduk = $_POST['namaproduk'];
+    $deskripsi = $_POST['deskripsi'];
+    $stock = $_POST['stock'];
+    $harga = $_POST['harga'];
+
+    $insert = mysqli_query($conn, "insert into produk (namaproduk, deskripsi, harga, stock) values ('$namaproduk', '$deskripsi', '$harga', '$stock')");
+
+
+    if($insert){
+        header('location:stock.php');
+    } else {
+        //apabila salah menginput data
+        echo '
+        <script>alert("Gagal menambah barang baru");
+        window.location.href="stock.php"
+        </script>
+        '; 
+    }
 ?>
