@@ -77,10 +77,12 @@ require 'function.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>id_order</th>
-                                            <th>id_user</th>
-                                            <th>Tanggal</th>
-                                            <th>id_pelanggan</th>
+                                            <th>No</th>
+                                            <th>Nama Produk</th>
+                                            <th>Deskripsi</th>
+                                            <th>Stock</th>
+                                            <th>Harga</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
