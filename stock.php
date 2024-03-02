@@ -88,15 +88,15 @@ require 'function.php';
                                     <tbody>
 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from produk")
+                                    $get = mysqli_query($conn, "select * from produk");
                                     $i = 1;
 
                                     while($p=mysqli_fetch_array($get)) {
-                                    $namaproduk = $p['namaproduk']
-                                    $deskripsi = $p['deskripsi']
-                                    $harga = $p['harga']
-                                    $stock = $p['stock']
-                                    $idproduk = $p['idproduk']
+                                    $namaproduk = $p['namaproduk'];
+                                    $deskripsi = $p['deskripsi'];
+                                    $harga = $p['harga'];
+                                    $stock = $p['stock'];
+                                    $idproduk = $p['idproduk'];
 
                                     
                                     ?>

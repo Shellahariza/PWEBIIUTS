@@ -30,7 +30,7 @@ if(isset($_POST['login'])){
 
 
 
-if (isset($_POST['tambahbarang']))
+if (isset($_POST['tambahbarang'])) {
     $namaproduk = $_POST['namaproduk'];
     $deskripsi = $_POST['deskripsi'];
     $stock = $_POST['stock'];
@@ -49,6 +49,7 @@ if (isset($_POST['tambahbarang']))
         </script>
         '; 
     }
+}
 
 //edit barang
 if (isset($_POST['edit'])['idp']) {
@@ -57,9 +58,9 @@ if (isset($_POST['edit'])['idp']) {
     $harga = $_POST['harga'];
     $idp = $_POST['idp']; //idproduk
 
-    $query = mysqli_query($conn,"update produk set namaproduk = '$np', deskripsi = '$desc', harga = '$harga' where idproduk = 'idp'")
+    $query = mysqli_query($conn,"update produk set namaproduk = '$np', deskripsi = '$desc', harga = '$harga' where idproduk = 'idp'");
 
-    if(query){
+    if($query){
         header('location:stock.php');
     } else {
         echo ' 
@@ -71,9 +72,9 @@ if (isset($_POST['edit'])['idp']) {
 if(isset($_POST['hapus'])){
     $idp = $_POST['idp'];
     
-    $query = mysqli_connect($conn, "delete from produk where idproduk = '$idp' ")
+    $query = mysqli_connect($conn, "delete from produk where idproduk = '$idp' ");
 
-    if(query){
+    if($query){
         header('location:stock.php');
     } else {
         echo ' 
