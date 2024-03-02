@@ -53,12 +53,12 @@ if (isset($_POST['tambahbarang'])) {
 
 //edit barang
 if (isset($_POST['edit'])) {
-    $np = $_POST['namaproduk'];
-    $desc = $_POST['deskripsi'];
+    $namaproduk = $_POST['namaproduk'];
+    $deskripsi = $_POST['deskripsi'];
     $harga = $_POST['harga'];
     $idp = $_POST['idp']; //idproduk
 
-    $query = mysqli_query($conn,"update produk set namaproduk = '$np', deskripsi = '$desc', harga = '$harga' where idproduk = 'idp'");
+    $query = mysqli_query($conn,"update produk set namaproduk = '$namaproduk', deskripsi = '$deskripsi', harga = '$harga' where idproduk = '$idp'");
 
     if($query){
         header('location:stock.php');
@@ -68,11 +68,12 @@ if (isset($_POST['edit'])) {
         window.location.href="stock.php" 
         </script> '; 
     }
+}
 
 if(isset($_POST['hapus'])){
     $idp = $_POST['idp'];
     
-    $query = mysqli_connect($conn, "delete from produk where idproduk = '$idp' ");
+    $query = mysqli_query($conn, "delete from produk where idproduk = '$idp' ");
 
     if($query){
         header('location:stock.php');
@@ -84,5 +85,4 @@ if(isset($_POST['hapus'])){
     }
 }
 
-}
 ?>
