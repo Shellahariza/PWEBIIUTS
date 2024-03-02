@@ -224,10 +224,10 @@ require 'function.php';
 
         <!-- Modal body -->
         <div class="modal-body">
-          <input type="text" name="namaproduk" class"form-control" placeholder="Nama Produk">
-          <input type="text" name="deskripsi" class"form-control mt-2" placeholder="Deskripsi">
-          <input type="num" name="stock" class"form-control mt-2" placeholder="Stock Awal">
-          <input type="num" name="harga" class"form-control mt-2" placeholder="Harga Produk">
+          <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk">
+          <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi">
+          <input type="num" name="stock" class="form-control mt-2" placeholder="Stock Awal">
+          <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk">
         </div>
         
         <!-- Modal footer -->
