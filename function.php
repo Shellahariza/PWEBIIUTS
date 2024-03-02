@@ -49,4 +49,39 @@ if (isset($_POST['tambahbarang']))
         </script>
         '; 
     }
+
+//edit barang
+if (isset($_POST['edit'])['idp']) {
+    $np = $_POST['namaproduk'];
+    $desc = $_POST['deskripsi'];
+    $harga = $_POST['harga'];
+    $idp = $_POST['idp']; //idproduk
+
+    $query = mysqli_query($conn,"update produk set namaproduk = '$np', deskripsi = '$desc', harga = '$harga' where idproduk = 'idp'")
+
+    if(query){
+        header('location:stock.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="stock.php" 
+        </script> '; 
+    }
+
+if(isset($_POST['hapus'])){
+    $idp = $_POST['idp'];
+    
+    $query = mysqli_connect($conn, "delete from produk where idproduk = '$idp' ")
+
+    if(query){
+        header('location:stock.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="stock.php" 
+        </script> '; 
+    }
+}
+
+}
 ?>
