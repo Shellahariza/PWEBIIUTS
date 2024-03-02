@@ -51,25 +51,27 @@ require 'function.php';
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Data Pesanan</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Selamat Datang</li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Informasi lainnya</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Tampilkan Lainnya</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
+                                    <div class="card-body">Jumlah Barang: </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-info mb-4" data-toggle="modal" data-target="#myModal">
+                            Tambah Barang Baru
+                        </button> 
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Contoh Database
+                                Data Barang
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -111,4 +113,38 @@ require 'function.php';
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
+
+
+    <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Tambah Barang Baru</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <form method="post">
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input type="text" name="namaproduk" class"form-control" placeholder="Nama Produk">
+          <input type="text" name="deskripsi" class"form-control mt-2" placeholder="Deskripsi">
+          <input type="num" name="stock" class"form-control mt-2" placeholder="Stock Awal">
+          <input type="num" name="harga" class"form-control mt-2" placeholder="Harga Produk">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" name="tambahbarang">Submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
 </html>
