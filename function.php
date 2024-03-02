@@ -52,7 +52,7 @@ if (isset($_POST['tambahbarang'])) {
 }
 
 //edit barang
-if (isset($_POST['edit'])['idp']) {
+if (isset($_POST['edit'])) {
     $np = $_POST['namaproduk'];
     $desc = $_POST['deskripsi'];
     $harga = $_POST['harga'];
