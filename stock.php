@@ -230,7 +230,7 @@ require 'function.php';
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="submit" class="btn btn-success" name="tambahbarang">Submit</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
         
       </div>
