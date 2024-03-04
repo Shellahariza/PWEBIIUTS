@@ -175,7 +175,6 @@ require 'function.php';
                                         </div>
 
                                     <?php
-                                    $i++;
                                     }; // akhir dari looping while tr
 
                                     ?>
