@@ -1,5 +1,5 @@
 <?php
-require 'function.php';
+require 'ceklogin.php';
 ?>
 
 <!DOCTYPE html>
