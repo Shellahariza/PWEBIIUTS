@@ -106,12 +106,18 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
                                     $tanggal = $p['tanggal'];
                                     $namapelanggan = $p['namapelanggan'];
                                     $alamat = $p['alamat'];
+
+                                    //hitung Jumlah
+                                    $hitungjumlah = mysqli_query($conn, "select * from detailpesanan where idpesanan='$idorder'");
+                                    $jumlah = mysqli_num_rows($hitungjumlah);
+
+
                                     ?>
                                         <tr>
                                             <td><?=$idorder;?></td>
                                             <td><?=$tanggal;?></td>
                                             <td><?=$namapelanggan;?> -<?=$alamat;?></td>
-                                            <td>Jumlah</td>
+                                            <td><?=$jumlah;?></td>
                                             <td><a href="view.php?idp=<?= $idorder;?>" class="btn btn-primary" target=blank > Tampilkan</a> Delete</td>
                     
                                         </td>

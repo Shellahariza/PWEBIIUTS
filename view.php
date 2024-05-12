@@ -119,9 +119,9 @@ if(isset($_GET['idp'])){|
                                         <tr>
                                             <td><?=$i++;?></td>
                                             <td><?=$namaproduk;?></td>
-                                            <td><?=$harga;?></td>
-                                            <td><?=$qty;?></td>
-                                            <td><?=$subtotal;?></td>
+                                            <td>Rp<?=number_format($harga);?></td>
+                                            <td><?=number_format($qty);?></td>
+                                            <td><?=number_format($subtotal);?></td>
                                             <td>Edit Delete</td>
                     
                                         </td>
