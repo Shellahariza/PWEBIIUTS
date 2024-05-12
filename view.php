@@ -75,7 +75,7 @@ if(isset($_GET['idp'])){|
                 <main>
                     <div class="container-fluid ">
                         <h1 class="mt-4">Data Pesanan : <?=$idp;?></h1>
-                        <h1 class="mt-4">Nama Pelanggan : <?=$namapel;?></h1>
+                        <h4 class="mt-4">Nama Pelanggan : <?=$namapel;?></h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Selamat Datang</li>
                         </ol>
@@ -122,7 +122,7 @@ if(isset($_GET['idp'])){|
                                             <td><?=$harga;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$subtotal;?></td>
-                                            <td>Tampilkan Delete</td>
+                                            <td>Edit Delete</td>
                     
                                         </td>
                                         </tr>
@@ -178,7 +178,7 @@ if(isset($_GET['idp'])){|
          <select name="idproduk"> class="form-control"
 
         <?php
-        $getproduk = mysqli_query($conn, "select *from produk")
+        $getproduk = mysqli_query($conn, "select *from produk where idproduk not in (select idproduk from detailpesanan where idpesanan='$idp' )")
         while($pl=mysqli_fetch_array($getproduk)){
             $namaproduk= $pl['namaproduk']
             $stock = $pl['stock']
