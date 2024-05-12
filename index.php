@@ -158,7 +158,7 @@ require 'function.php';
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Barang Baru</h4>
+          <h4 class="modal-title">Tambah Pesanan Baru</h4>
           <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
         </div>
         
