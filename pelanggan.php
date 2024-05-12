@@ -116,10 +116,10 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td>
                                             <!-- Button to Open the Modal -->
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpl;?>">
                                             Edit
                                             </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpl;?>">
                                             Delete
                                             </button>
                                         </td>
