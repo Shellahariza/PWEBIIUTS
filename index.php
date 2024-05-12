@@ -112,7 +112,7 @@ require 'function.php';
                                             <td><?=$tanggal;?></td>
                                             <td><?=$namapelanggan;?> -<?=$alamat;?></td>
                                             <td>Jumlah</td>
-                                            <td>Tampilkan Delete</td>
+                                            <td><a href="view.php" class="btn btn-primary" target=blank > Tampilkan</a> Delete</td>
                     
                                         </td>
                                         </tr>
