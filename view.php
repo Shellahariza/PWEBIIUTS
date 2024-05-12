@@ -104,7 +104,7 @@ if(isset($_GET['idp'])){|
                                     <tbody>
                                 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from detailpesanan p, produk pr where p.idproduk= pr.idproduk");
+                                    $get = mysqli_query($conn, "select * from detailpesanan p, produk pr where p.idproduk= pr.idproduk and idpesanan ='$idp'");
                                     $i = 1;
 
 
