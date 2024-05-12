@@ -176,9 +176,9 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
         <?php
         $getpelanggan = mysqli_query($conn, "select *from pelanggan");
         while($pl=mysqli_fetch_array($getpelanggan)){
-            $namapelanggan = $pl['namapelanggan']
-            $idpelanggan = $pl['idpelanggan']
-            $alamat = $pl['alamat']
+            $namapelanggan = $pl['namapelanggan'];
+            $idpelanggan = $pl['idpelanggan'];
+            $alamat = $pl['alamat'];
         ?>
         <option value="<?=$idpelanggan;?>"><?=$namapelanggan;?> - <?=$alamat;?></option>
 
