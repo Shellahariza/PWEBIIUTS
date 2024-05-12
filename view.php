@@ -5,9 +5,13 @@ require 'function.php';
 
 if(isset($_GET['idp'])){|
     $idp = $_GET['idp'];
+
+    $ambilnamapelanggan = mysqli_query($conn, "select * from pesanan p, pelanggan pl where p.idpelanggan=pl.idpelanggan and p.idorder='$idp'");
+    $np = mysqli_fetch_array($ambilnamapelanggan);
+    $namapel = $np['namapelanggan'];
+
 } else {
     header('location : index.php');
-
 }
 
 
@@ -71,6 +75,7 @@ if(isset($_GET['idp'])){|
                 <main>
                     <div class="container-fluid ">
                         <h1 class="mt-4">Data Pesanan : <?=$idp;?></h1>
+                        <h1 class="mt-4">Nama Pelanggan : <?=$namapel;?></h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Selamat Datang</li>
                         </ol>
