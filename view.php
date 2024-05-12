@@ -121,7 +121,7 @@ if(isset($_GET['idp'])){|
                                             <td><?=$namaproduk;?></td>
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td><?=number_format($qty);?></td>
-                                            <td><?=number_format($subtotal);?></td>
+                                            <td>Rp<?=number_format($subtotal);?></td>
                                             <td>Edit Delete</td>
                     
                                         </td>
