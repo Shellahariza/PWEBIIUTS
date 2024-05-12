@@ -185,7 +185,7 @@ if(isset($_GET['idp'])){|
             $deskripsi = $pl['deskripsi']
             $idproduk= $pl['idproduk']
         ?>
-        <option value="<?=$idproduk;?>"><?=$namaproduk;?> - <?=$deskripsi;?></option>
+        <option value="<?=$idproduk;?>"><?=$namaproduk;?> - <?=$deskripsi;?> (stock: <?=$stock;?>)</option>
 
 
 
@@ -195,7 +195,7 @@ if(isset($_GET['idp'])){|
 
 
          </select>
-        <input type="number" name="qty" class="form-control mt-4" placeholder="Jumlah">
+        <input type="number" name="qty" class="form-control mt-4" placeholder="Jumlah" min="1" required>
         <input type="hidden" name="idp" value="<?=$idp;?>">
 
 
