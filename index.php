@@ -86,7 +86,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
                                 Data Pesanan
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="datatablesSimple" class="mb-3">
                                     <thead>
                                         <tr>
                                             <th>ID Pesanan</th>
