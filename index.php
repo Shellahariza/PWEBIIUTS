@@ -1,5 +1,5 @@
 <?php
-require 'ceklogin.php';
+require 'function.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +37,14 @@ require 'ceklogin.php';
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang
                             </a>
+                            <a class="nav-link" href="masuk.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Barang Masuk
+                            </a>
+                            <a class="nav-link" href="pelanggan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Kelola Pelanggan
+                            </a>
                             <a class="nav-link" href="logout.php">
                                 Logout
                             </a>
@@ -58,30 +66,56 @@ require 'ceklogin.php';
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Informasi lainnya</div>
+                                    <div class="card-body">Primary Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Tampilkan Lainnya</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Tambah Pesanan Baru
+                        </button>
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Contoh Database
+                                Data Pesanan
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>id_order</th>
-                                            <th>id_user</th>
+                                            <th>ID Pesanan</th>
                                             <th>Tanggal</th>
-                                            <th>id_pelanggan</th>
+                                            <th>Jumlah</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                
+                                    <?php 
+                                    $get = mysqli_query($conn, "select * from pesanan");
+
+                                    while($p=mysqli_fetch_array($get)){
+                                    $idorder = $p['idorder'];
+                                    $tanggal = $p['tanggal'];
+                                
+                                    ?>
+                                        <tr>
+                                            <td><?=$idorder;?></td>
+                                            <td><?=$tanggal;?></td>
+                                            <td>Jumlah</td>
+                                            <td>Tampilkan Delete</td>
+                    
+                                        </td>
+                                        </tr>
+                                        <?php
+                                    }; //end of while
+                                    ?>
                                         <tr>
                                             <td>0903</td>
                                             <td>128</td>
@@ -111,4 +145,36 @@ require 'ceklogin.php';
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
+
+    <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+      <form method="post">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Tambah Barang Baru</h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk">
+          <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi">
+          <input type="num" name="stock" class="form-control mt-2" placeholder="Stock Awal">
+          <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" name="tambahbarang">Submit</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 </html>
