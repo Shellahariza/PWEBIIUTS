@@ -1,17 +1,17 @@
 <?php
-require 'function.php';
+require 'ceklogin.php';
 
 
 
-if(isset($_GET['idp'])){|
+if(isset($_GET['idp'])){
     $idp = $_GET['idp'];
 
     $ambilnamapelanggan = mysqli_query($conn, "select * from pesanan p, pelanggan pl where p.idpelanggan=pl.idpelanggan and p.idorder='$idp'");
     $np = mysqli_fetch_array($ambilnamapelanggan);
     $namapel = $np['namapelanggan'];
-
 } else {
     header('location : index.php');
+
 }
 
 
@@ -104,28 +104,70 @@ if(isset($_GET['idp'])){|
                                     <tbody>
                                 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from detailpesanan p, produk pr where p.idproduk= pr.idproduk and idpesanan ='$idp'");
+                                    $get = mysqli_query($conn, "select * from detailpesanan p, produk pr where p.idproduk= pr.idproduk");
                                     $i = 1;
 
 
 
                                     while($p=mysqli_fetch_array($get)){
+                                    $idpr = $p['idproduk'];
+                                    $iddp = $p['iddetailpesanan'];
                                     $qty = $p['qty'];
                                     $harga = $p['harga'];
                                     $namaproduk = $p['namaproduk'];
+                                    $desc = $p['deskripsi'];
                                     $subtotal =$qty*$harga;
 
                                     ?>
                                         <tr>
                                             <td><?=$i++;?></td>
-                                            <td><?=$namaproduk;?></td>
+                                            <td><?=$namaproduk;?> (<?=$desc;?>)</td>
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td><?=number_format($qty);?></td>
                                             <td>Rp<?=number_format($subtotal);?></td>
-                                            <td>Edit Delete</td>
+                                            <td>Tampilkan 
+                                            <!-- Button to Open the Modal -->
+
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpr;?>">
+                                            Hapus
+                                            </button></td>
                     
                                         </td>
                                         </tr>
+
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="delete<?=$idpr;?>">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            
+                                        <form method="post">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                            <h4 class="modal-title">Apakah Anda Yakin Ingin Menghapus Barang Ini?</h4>
+                                            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                                            </div>
+                                            
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                            Apakah Anda Yakin Ingin Menghapus Barang Ini?
+                                            <input type="hidden" name="idp" value="<?=$iddp;?>">
+                                            <input type="hidden" name="idpr" value="<?=$idpr;?>">
+                                            <input type="hidden" name="idorder" value="<?=$idp;?>">
+                                            </div>
+                                            
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success" name="hapusprodukpesanan">Ya</button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                    </div>
+
+
+
                                         <?php
                                     }; //end of while
                                     ?>
@@ -178,14 +220,14 @@ if(isset($_GET['idp'])){|
          <select name="idproduk"> class="form-control"
 
         <?php
-        $getproduk = mysqli_query($conn, "select *from produk where idproduk not in (select idproduk from detailpesanan where idpesanan='$idp' )")
+        $getproduk = mysqli_query($conn, "select *from produk");
         while($pl=mysqli_fetch_array($getproduk)){
-            $namaproduk= $pl['namaproduk']
-            $stock = $pl['stock']
-            $deskripsi = $pl['deskripsi']
-            $idproduk= $pl['idproduk']
+            $namaproduk= $pl['namaproduk'];
+            $stock = $pl['stock'];
+            $deskripsi = $pl['deskripsi'];
+            $idproduk= $pl['idproduk'];
         ?>
-        <option value="<?=$idproduk;?>"><?=$namaproduk;?> - <?=$deskripsi;?> (stock: <?=$stock;?>)</option>
+        <option value="<?=$idproduk;?>"><?=$namaproduk;?> - <?=$deskripsi;?></option>
 
 
 
