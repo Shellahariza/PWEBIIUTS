@@ -85,34 +85,30 @@ require 'ceklogin.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama Produk</th>
-                                            <th>Deskripsi</th>
-                                            <th>Stock</th>
-                                            <th>Harga</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>No Telepon</th>
+                                            <th>Alamat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from produk");
-                                    $i = 1;
+                                    $get = mysqli_query($conn, "select * from pelanggan");
+                                    $i = 1; //penomoran
 
                                     while($p=mysqli_fetch_array($get)) {
-                                    $namaproduk = $p['namaproduk'];
-                                    $deskripsi = $p['deskripsi'];
-                                    $harga = $p['harga'];
-                                    $stock = $p['stock'];
-                                    $idproduk = $p['idproduk'];
+                                    $namapelanggan = $p['namapelanggan'];
+                                    $notelp = $p['notelp'];
+                                    $alamat= $p['alamat'];
 
                                     
                                     ?>
                                         <tr>
                                             <td><?=$i++;?></td>
-                                            <td><?=$namaproduk;?></td>
-                                            <td><?=$deskripsi;?></td>
-                                            <td><?=$stock;?></td>
+                                            <td><?=$namapelanggan;?></td>
+                                            <td><?=$notelp;?></td>
+                                            <td><?=$alamat;?></td>
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td>
                                             <!-- Button to Open the Modal -->

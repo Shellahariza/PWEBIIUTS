@@ -91,6 +91,7 @@ require 'function.php';
                                         <tr>
                                             <th>ID Pesanan</th>
                                             <th>Tanggal</th>
+                                            <th>Nama Pelanggan</th>
                                             <th>Jumlah</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -98,16 +99,18 @@ require 'function.php';
                                     <tbody>
                                 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from pesanan");
+                                    $get = mysqli_query($conn, "select * from pesanan p, pelanggan pl where p.idpelanggan= pl.idpelanggan");
 
                                     while($p=mysqli_fetch_array($get)){
                                     $idorder = $p['idorder'];
                                     $tanggal = $p['tanggal'];
-                                
+                                    $namapelanggan = $p['namapelanggan'];
+                                    $alamat = $p['alamat'];
                                     ?>
                                         <tr>
                                             <td><?=$idorder;?></td>
                                             <td><?=$tanggal;?></td>
+                                            <td><?=$namapelanggan;?> -<?=$alamat;?></td>
                                             <td>Jumlah</td>
                                             <td>Tampilkan Delete</td>
                     
@@ -161,15 +164,31 @@ require 'function.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-          <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk">
-          <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi">
-          <input type="num" name="stock" class="form-control mt-2" placeholder="Stock Awal">
-          <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk">
+        Pilih Pelanggan
+         <select name="idpelanggan"> class="form-control"
+
+        <?php
+        $getpelanggan = mysqli_query($conn, "select *from pelanggan")
+        while($pl=mysqli_fetch_array($getpelanggan)){
+            $namapelanggan = $pl['namapelanggan']
+            $idpelanggan = $pl['idpelanggan']
+            $alamat = $pl['alamat']
+        ?>
+        <option value="<?=$idpelanggan;?>"><?=$namapelanggan;?> - <?=$alamat;?></option>
+
+
+
+        <?php
+        }
+        ?>
+
+
+         </select>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="tambahbarang">Submit</button>
+          <button type="submit" class="btn btn-success" name="tambahpesanan">Submit</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
         

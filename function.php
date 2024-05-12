@@ -84,4 +84,40 @@ if(isset($_POST['hapus'])){
         </script> '; 
     }
 }
+
+
+
+if(isset($_POST['tambahpelanggan'])){
+    $namapelanggan = $_POST['namapelanggan'];
+    $notelp = $_POST['notelp'];
+    $alamat = $_POST['alamat'];
+    $query = mysqli_query($conn, "insert into pelanggan(namapelanggan, notelp, alamat) values ('$namapelanggan', ' $notelp', '$alamat')");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo '
+        <script>alert("Gagal menambah pelanggan baru");
+        window.location.href="pelanggan.php"
+        </script>
+        '; 
+    }
+}
+
+
+if(isset($_POST['tambahpesanan'])){
+    $idpelanggan = $_POST['idpelanggan'];
+  
+    $query = mysqli_query($conn, "insert into pesanan(idpelanggan) values ('$idpelanggan')");
+
+    if($query){
+        header('location:index.php');
+    } else {
+        echo '
+        <script>alert("Gagal menambah pesananbaru");
+        window.location.href="index.php"
+        </script>
+        '; 
+    }
+}
 ?>
