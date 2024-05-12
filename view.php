@@ -1,5 +1,16 @@
 <?php
 require 'function.php';
+
+
+
+if(isset($_GET['idp'])){|
+    $idp = $_GET['idp'];
+} else {
+    header('location : index.php');
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
