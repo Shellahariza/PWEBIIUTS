@@ -120,4 +120,25 @@ if(isset($_POST['tambahpesanan'])){
         '; 
     }
 }
+
+//edit pelanggan
+    if (isset($_POST['editpelanggan'])){
+        $np = $_POST['namapelanggan'];
+        $nt = $_POST['notelp'];
+        $a = $_POST['alamat'];
+        $id = $-POST['idpl'];
+
+         $query = mysqli_query($conn,"update produk set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$id'");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="stock.php" 
+        </script> '; 
+    }
+}
+        
+    }
 ?>
