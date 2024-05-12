@@ -135,10 +135,27 @@ if(isset($_POST['tambahpesanan'])){
     } else {
         echo ' 
         <script>alert("Gagal"); 
-        window.location.href="stock.php" 
+        window.location.href="pelanggan.php" 
         </script> '; 
     }
 }
-        
+
+//hapus pelanggan
+    if(isset($_POST['hapuspelanggan'])){
+    $idpl = $_POST['idpl'];
+    
+    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idpl' ");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="pelanggan.php" 
+        </script> '; 
     }
+}
+
+        
+    
 ?>
