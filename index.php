@@ -81,7 +81,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
                         </button>
 
                         <div class="card mb-4">
-                            <div class="card-header">
+                            <div class="card-header mb-4">
                                 <i class="fas fa-table me-1"></i>
                                 Data Pesanan
                             </div>
