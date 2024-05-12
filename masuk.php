@@ -64,6 +64,11 @@ require 'ceklogin.php';
                             <li class="breadcrumb-item active">Selamat Datang</li>
                         </ol>
 
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Tambah Barang Masuk
+                        </button>
+                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
