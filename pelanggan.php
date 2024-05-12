@@ -104,6 +104,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                     $namapelanggan = $p['namapelanggan'];
                                     $notelp = $p['notelp'];
                                     $alamat= $p['alamat'];
+                                    $idpl = $p['idpelanggan'];
 
                                     
                                     ?>
@@ -125,7 +126,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                         </tr>
 
                                        <!-- ModalEdit untuk setiap produk -->
-                                        <div class="modal fade" id="edit<?=$idproduk;?>">
+                                        <div class="modal fade" id="edit<?=$idpl;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!-- Modal Header -->
@@ -136,14 +137,14 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                                     <form method="post">
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                            <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value="<?=$namaproduk;?>">
-                                                            <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi" value="<?=$deskripsi;?>">
-                                                            <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk" value="<?=$harga;?>">
-                                                            <input type="hidden" name="idp" value="<?=$idproduk;?>">
+                                                            <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Produk" value="<?=$namapelanggan;?>">
+                                                            <input type="text" name="notelp" class="form-control mt-2" placeholder="No Telp" value="<?=$notelp;?>">
+                                                            <input type="num" name="alamat" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
+                                                            <input type="hidden" name="idpl" value="<?=$idpl;?>">
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success" name="edit">Submit</button>
+                                                            <button type="submit" class="btn btn-success" name="editpelanggan">Submit</button>
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </form>
@@ -153,13 +154,13 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
 
                                                                             
                                                         <!-- Modal Delete -->
-                                                        <div class="modal fade" id="delete<?=$idproduk;?>">
+                                                        <div class="modal fade" id="delete<?=$idpl;?>">
                                                         <div class="modal-dialog">
                                                         <div class="modal-content">
                                                                                     
                                                         <!-- Modal Header -->
                                                         <div class="modal-header">
-                                                        <h4 class="modal-title">Hapus <?=$namaproduk;?></h4>
+                                                        <h4 class="modal-title">Hapus <?=$namapelanggan;?></h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
                                                         </div>
                                                                                         
@@ -168,12 +169,12 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
                                                         Apakah Yakin Ingin Dihapus? 
-                                                        <input type = "hidden" name = "idp" value = "<?=$idproduk;?>" ?>
+                                                        <input type = "hidden" name = "idpl" value = "<?=$idpl;?>" ?>
                                                         </div>
                                                                                         
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
+                                                        <button type="submit" class="btn btn-danger" name="hapuspelanggan">Hapus</button>
                                                         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tidak</button>
                                                         </div>
                                                     </form>                           
