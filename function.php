@@ -121,41 +121,21 @@ if(isset($_POST['tambahpesanan'])){
     }
 }
 
-//edit pelanggan
-    if (isset($_POST['editpelanggan'])){
-        $np = $_POST['namapelanggan'];
-        $nt = $_POST['notelp'];
-        $a = $_POST['alamat'];
-        $id = $-POST['idpl'];
+if(isset($_POST['addproduk'])){
+    $idproduk = $_POST['idproduk'];
+    $idp = $_POST['idp'];
+    $qty = $_POST['qty'];//jumlah
 
-         $query = mysqli_query($conn,"update produk set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$id'");
+    $query = mysqli_query($conn, "insert into detailpesanan(idpesanan, idproduk, qty) values ('$idp','$idproduk','$qty')");
 
     if($query){
-        header('location:pelanggan.php');
+        header('location:view.php?idp='.$idp);
     } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
+        echo '
+        <script>alert("Gagal menambah pesananbaru");
+        window.location.href="view.php?idp="'.$idp.'
+        </script>
+        '; 
     }
 }
-
-//hapus pelanggan
-    if(isset($_POST['hapuspelanggan'])){
-    $idpl = $_POST['idpl'];
-    
-    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idpl' ");
-
-    if($query){
-        header('location:pelanggan.php');
-    } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
-    }
-}
-
-        
-    
 ?>

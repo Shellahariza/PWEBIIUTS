@@ -88,29 +88,35 @@ if(isset($_GET['idp'])){|
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>ID Pesanan</th>
-                                            <th>Tanggal</th>
-                                            <th>Nama Pelanggan</th>
+                                            <th>No</th>
+                                            <th>Nama Produk</th>
+                                            <th>Harga Satuan</th>
                                             <th>Jumlah</th>
+                                            <th>Sub-total</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                 
                                     <?php 
-                                    $get = mysqli_query($conn, "select * from pesanan p, pelanggan pl where p.idpelanggan= pl.idpelanggan");
+                                    $get = mysqli_query($conn, "select * from detailpesanan p, produk pr where p.idproduk= pr.idproduk");
+                                    $i = 1;
+
+
 
                                     while($p=mysqli_fetch_array($get)){
-                                    $idorder = $p['idorder'];
-                                    $tanggal = $p['tanggal'];
-                                    $namapelanggan = $p['namapelanggan'];
-                                    $alamat = $p['alamat'];
+                                    $qty = $p['qty'];
+                                    $harga = $p['harga'];
+                                    $namaproduk = $p['namaproduk'];
+                                    $subtotal =$qty*$harga;
+
                                     ?>
                                         <tr>
-                                            <td><?=$idorder;?></td>
-                                            <td><?=$tanggal;?></td>
-                                            <td><?=$namapelanggan;?> -<?=$alamat;?></td>
-                                            <td>Jumlah</td>
+                                            <td><?=$i++;?></td>
+                                            <td><?=$namaproduk;?></td>
+                                            <td><?=$harga;?></td>
+                                            <td><?=$qty;?></td>
+                                            <td><?=$subtotal;?></td>
                                             <td>Tampilkan Delete</td>
                     
                                         </td>
@@ -164,7 +170,7 @@ if(isset($_GET['idp'])){|
         <!-- Modal body -->
         <div class="modal-body">
         Pilih Barang
-         <select name="idpelanggan"> class="form-control"
+         <select name="idproduk"> class="form-control"
 
         <?php
         $getproduk = mysqli_query($conn, "select *from produk")
@@ -184,11 +190,16 @@ if(isset($_GET['idp'])){|
 
 
          </select>
+        <input type="number" name="qty" class="form-control mt-4" placeholder="Jumlah">
+        <input type="hidden" name="idp" value="<?=$idp;?>">
+
+
+
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="tambahpesanan">Submit</button>
+          <button type="submit" class="btn btn-success" name="addproduk">Submit</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
         
