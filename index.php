@@ -174,7 +174,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
          <select name="idpelanggan"> class="form-control"
 
         <?php
-        $getpelanggan = mysqli_query($conn, "select *from pelanggan")
+        $getpelanggan = mysqli_query($conn, "select *from pelanggan");
         while($pl=mysqli_fetch_array($getpelanggan)){
             $namapelanggan = $pl['namapelanggan']
             $idpelanggan = $pl['idpelanggan']
