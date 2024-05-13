@@ -103,38 +103,34 @@ if(isset($_POST['tambahpelanggan'])){
     }
 }
 
-//edit pelanggan
+// edit pelanggan
 if (isset($_POST['editpelanggan'])) {
     $np = $_POST['namapelanggan'];
     $nt = $_POST['notelp'];
     $a = $_POST['alamat'];
-    $id = $_POST['idpl'];
+    $idpl = $_POST['idpelanggan'];
 
-    $query = mysqli_query($conn,"update pelanggan set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$idpl'");
+    $query = mysqli_query($conn, "UPDATE pelanggan SET namapelanggan = '$np', notelp = '$nt', alamat = '$a' WHERE idpelanggan = '$idpl'");
 
-    if($query){
-        header('location:pelanggan.php');
+    if ($query) {
+        header('Location: pelanggan.php');
+        exit();
     } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
+        echo '<script>alert("Gagal mengedit pelanggan");</script>';
     }
 }
 
-//hapus pelanggan
-if(isset($_POST['hapuspelanggan'])){
-    $idpl = $_POST['idpl'];
+// hapus pelanggan
+if (isset($_POST['hapuspelanggan'])) {
+    $idpl = $_POST['idpelanggan'];
     
-    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idp' ");
+    $query = mysqli_query($conn, "DELETE FROM pelanggan WHERE idpelanggan = '$idpl'");
 
-    if($query){
-        header('location:pelanggan.php');
+    if ($query) {
+        header('Location: pelanggan.php');
+        exit();
     } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
+        echo '<script>alert("Gagal menghapus pelanggan");</script>';
     }
 }
 
