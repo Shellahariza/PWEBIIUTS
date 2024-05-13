@@ -88,6 +88,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Pelanggan</th>
                                             <th>No Telepon</th>
                                             <th>Alamat</th>
@@ -104,7 +105,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                     $namapelanggan = $p['namapelanggan'];
                                     $notelp = $p['notelp'];
                                     $alamat= $p['alamat'];
-                                    $idpl = $p['idpelanggan'];
+                                    $idpelanggan = $p['idpelanggan'];
 
                                     
                                     ?>
@@ -113,26 +114,25 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                             <td><?=$namapelanggan;?></td>
                                             <td><?=$notelp;?></td>
                                             <td><?=$alamat;?></td>
-                                            <td>Rp<?=number_format($harga);?></td>
                                             <td>
                                             <!-- Button to Open the Modal -->
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpl;?>">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpelanggan;?>">
                                             Edit
                                             </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpl;?>">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpelanggan;?>">
                                             Delete
                                             </button>
                                         </td>
                                         </tr>
 
                                        <!-- ModalEdit untuk setiap produk -->
-                                        <div class="modal fade" id="edit<?=$idpl;?>">
+                                        <div class="modal fade" id="edit<?=$idpelanggan;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Ubah <?=$namaproduk;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Ubah <?=$namapelanggan;?></h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <form method="post">
                                                         <!-- Modal body -->
@@ -154,14 +154,14 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
 
                                                                             
                                                         <!-- Modal Delete -->
-                                                        <div class="modal fade" id="delete<?=$idpl;?>">
+                                                        <div class="modal fade" id="delete<?=$idpelanggan;?>">
                                                         <div class="modal-dialog">
                                                         <div class="modal-content">
                                                                                     
                                                         <!-- Modal Header -->
                                                         <div class="modal-header">
                                                         <h4 class="modal-title">Hapus <?=$namapelanggan;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
                                                                                         
                                                         <form method="post">
@@ -229,7 +229,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
         <!-- Modal body -->
         <div class="modal-body">
           <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Pelanggan">
-          <input type="text" name="notelp" class="form-control mt-2" placeholder="No Telepom">
+          <input type="text" name="notelp" class="form-control mt-2" placeholder="No Telepon">
           <input type="text" name="alamat" class="form-control mt-2" placeholder="Alamat">
         </div>
         

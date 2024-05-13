@@ -125,15 +125,47 @@ if(isset($_GET['idp'])){
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td><?=number_format($qty);?></td>
                                             <td>Rp<?=number_format($subtotal);?></td>
-                                            <td>Tampilkan 
-                                            <!-- Button to Open the Modal -->
-
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpr;?>">
-                                            Hapus
-                                            </button></td>
+                                            <td> 
+                                                <!-- Button to Open the Modal -->
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpr;?>">
+                                                Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpr;?>">
+                                                Hapus
+                                                </button>
                     
-                                        </td>
+                                            </td>
                                         </tr>
+
+                                        <!-- ModalEdit untuk setiap produk -->
+                                        <div class="modal fade" id="edit<?=$idpr;?>">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                <h4 class="modal-title">Ubah Data Detail Pesanan</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <form method="post">
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value="<?=$namaproduk;?>: <?=$desc;?>" disabled>
+                                                <input type="number" name="qty" class="form-control mt-2" placeholder="Harga Produk" value="<?=$qty;?>">
+                                                <input type="hidden" name="iddp" value="<?=$iddp;?>">
+                                                <input type="hidden" name="idp" value="<?=$idp;?>">
+                                                <input type="hidden" name="idpr" value="<?=$idpr;?>">
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success" name="editdetailpesanan">Submit</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- The Modal -->
                                         <div class="modal fade" id="delete<?=$idpr;?>">
@@ -171,12 +203,6 @@ if(isset($_GET['idp'])){
                                         <?php
                                     }; //end of while
                                     ?>
-                                        <tr>
-                                            <td>0903</td>
-                                            <td>128</td>
-                                            <td>2024/03/01</td>
-                                            <td>20</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

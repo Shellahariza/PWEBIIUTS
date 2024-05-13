@@ -63,12 +63,10 @@ require 'ceklogin.php';
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Selamat Datang</li>
                         </ol>
-
                         <!-- Button to Open the Modal -->
                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
-                        Tambah Barang Masuk
+                        Tambah Barang Baru
                         </button>
-                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -80,7 +78,6 @@ require 'ceklogin.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Produk</th>
-                                            <th>Deskripsi</th>
                                             <th>Jumlah</th>
                                             <th>Tanggal</th>
                                             <th>Aksi</th>
@@ -93,51 +90,51 @@ require 'ceklogin.php';
                                     $i = 1;
 
                                     while($p=mysqli_fetch_array($get)) {
+                                    $idproduk = $p['idproduk'];
                                     $namaproduk = $p['namaproduk'];
                                     $deskripsi = $p['deskripsi'];
                                     $qty = $p['qty'];
                                     $tanggal = $p['tanggalmasuk'];
-                                    $idproduk = $p['idproduk'];
+                                    $idmasuk = $p['idmasuk'];
 
                                     
                                     ?>
                                         <tr>
                                             <td><?=$i++;?></td>
-                                            <td><?=$namaproduk;?></td>
-                                            <td><?=$deskripsi;?></td>
+                                            <td><?=$namaproduk;?>: <?=$deskripsi;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$tanggal;?></td>
                                             <td>
                                             <!-- Button to Open the Modal -->
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idmasuk;?>">
                                             Edit
                                             </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idmasuk;?>">
                                             Delete
                                             </button>
                                         </td>
                                         </tr>
 
                                        <!-- ModalEdit untuk setiap produk -->
-                                        <div class="modal fade" id="edit<?=$idproduk;?>">
+                                        <div class="modal fade" id="edit<?=$idmasuk;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Ubah <?=$namaproduk;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Ubah Data Barang Masuk</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <form method="post">
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                            <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value="<?=$namaproduk;?>">
-                                                            <input type="text" name="deskripsi" class="form-control mt-2" placeholder="Deskripsi" value="<?=$deskripsi;?>">
-                                                            <input type="num" name="harga" class="form-control mt-2" placeholder="Harga Produk" value="<?=$harga;?>">
+                                                            <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value="<?=$namaproduk;?>: <?=$deskripsi;?>" disabled>
+                                                            <input type="number" name="qty" class="form-control mt-2" placeholder="Jumlah" value="<?=$qty;?>">
+                                                            <input type="hidden" name="idm" value="<?=$idmasuk;?>">
                                                             <input type="hidden" name="idp" value="<?=$idproduk;?>">
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success" name="edit">Submit</button>
+                                                            <button type="submit" class="btn btn-success" name="editdatabarangmasuk">Submit</button>
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </form>
@@ -147,14 +144,14 @@ require 'ceklogin.php';
 
                                                                             
                                                         <!-- Modal Delete -->
-                                                        <div class="modal fade" id="delete<?=$idproduk;?>">
+                                                        <div class="modal fade" id="delete<?=$idmasuk;?>">
                                                         <div class="modal-dialog">
                                                         <div class="modal-content">
                                                                                     
                                                         <!-- Modal Header -->
                                                         <div class="modal-header">
-                                                        <h4 class="modal-title">Hapus <?=$namaproduk;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Hapus Data Barang Masuk</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
                                                                                         
                                                         <form method="post">
@@ -163,12 +160,13 @@ require 'ceklogin.php';
                                                         <div class="modal-body">
                                                         Apakah Yakin Ingin Dihapus? 
                                                         <input type = "hidden" name = "idp" value = "<?=$idproduk;?>" ?>
+                                                        <input type = "hidden" name = "idm" value = "<?=$idmasuk;?>" ?>
                                                         </div>
                                                                                         
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
-                                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tidak</button>
+                                                        <button type="submit" class="btn btn-success" name="hapusdatabarangmasuk">Hapus</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
                                                         </div>
                                                     </form>                           
                                                 </div>
@@ -216,7 +214,7 @@ require 'ceklogin.php';
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Tambah Barang Baru</h4>
-          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-bs-dismiss="modal"></button>
         </div>
         
         <!-- Modal body -->
@@ -227,13 +225,15 @@ require 'ceklogin.php';
             $getproduk = mysqli_query($conn, "select * from produk");
 
             while($pl=mysqli_fetch_array($getproduk)){
+                $idproduk = $pl ['idproduk'];
                 $namaproduk = $pl['namaproduk'];
                 $stock = $pl['stock'];
                 $deskripsi = $pl['deskripsi'];
-                $idproduk = $pl['idproduk'];
+                $idmasuk = $pl['idmasuk'];
             ?>
 
             <option value="<?=$idproduk;?>"><?=$namaproduk;?> - <?=$deskripsi;?> (Stock: <?=$stock?>) </option>
+
             <?php
             }
             ?>

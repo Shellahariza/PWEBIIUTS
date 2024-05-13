@@ -86,7 +86,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
                                 Data Pesanan
                             </div>
                             <div class="card-body">
-                                <table class="table table_bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table id="datatablesSimple" class="mb-3">
                                     <thead>
                                         <tr>
                                             <th>ID Pesanan</th>
@@ -118,19 +118,40 @@ $h2 = mysqli_num_rows($h1); //jumlah pesanan
                                             <td><?=$tanggal;?></td>
                                             <td><?=$namapelanggan;?> -<?=$alamat;?></td>
                                             <td><?=$jumlah;?></td>
-                                            <td><a href="view.php?idp=<?= $idorder;?>" class="btn btn-primary" target=blank > Tampilkan</a> Delete</td>
-                    
+                                            <td><a href="view.php?idp=<?=$idorder;?>" class="btn btn-primary"target="blank">Tampilkan</a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idorder;?>">
+                                            Delete
+                                            </button>
                                         </td>
                                         </tr>
+
+                                        <!-- Modal Delete -->
+                                        <div class="modal fade" id="delete<?=$idorder;?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                                                    
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                        <h4 class="modal-title">Hapus Data Pesanan</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>
+                                                                                        
+                                                        <form method="post">
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                        Apakah Yakin Ingin Dihapus? 
+                                                        <input type = "hidden" name = "ido" value = "<?=$idorder;?>" ?>
+                                                        </div>
+                                                                                        
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success" name="hapusorder">Hapus</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+                                                        </div>
                                         <?php
                                     }; //end of while
                                     ?>
-                                        <tr>
-                                            <td>0903</td>
-                                            <td>128</td>
-                                            <td>2024/03/01</td>
-                                            <td>20</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

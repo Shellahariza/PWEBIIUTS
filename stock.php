@@ -135,7 +135,7 @@ $h2 = mysqli_num_rows($h1); //jumlah produk
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Ubah <?=$namaproduk;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <form method="post">
                                                         <!-- Modal body -->
@@ -164,7 +164,7 @@ $h2 = mysqli_num_rows($h1); //jumlah produk
                                                         <!-- Modal Header -->
                                                         <div class="modal-header">
                                                         <h4 class="modal-title">Hapus <?=$namaproduk;?></h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
                                                                                         
                                                         <form method="post">
@@ -226,7 +226,7 @@ $h2 = mysqli_num_rows($h1); //jumlah produk
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Tambah Barang Baru</h4>
-          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-bs-dismiss="modal"></button>
         </div>
         
         <!-- Modal body -->

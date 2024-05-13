@@ -85,8 +85,7 @@ if(isset($_POST['hapus'])){
     }
 }
 
-
-
+//tambah pelanggan
 if(isset($_POST['tambahpelanggan'])){
     $namapelanggan = $_POST['namapelanggan'];
     $notelp = $_POST['notelp'];
@@ -104,6 +103,40 @@ if(isset($_POST['tambahpelanggan'])){
     }
 }
 
+//edit pelanggan
+if (isset($_POST['editpelanggan'])) {
+    $np = $_POST['namapelanggan'];
+    $nt = $_POST['notelp'];
+    $a = $_POST['alamat'];
+    $id = $_POST['idpl'];
+
+    $query = mysqli_query($conn,"update pelanggan set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$idpl'");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="pelanggan.php" 
+        </script> '; 
+    }
+}
+
+//hapus pelanggan
+if(isset($_POST['hapuspelanggan'])){
+    $idpl = $_POST['idpl'];
+    
+    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idp' ");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="pelanggan.php" 
+        </script> '; 
+    }
+}
 
 if(isset($_POST['tambahpesanan'])){
     $idpelanggan = $_POST['idpelanggan'];
@@ -120,6 +153,7 @@ if(isset($_POST['tambahpesanan'])){
         '; 
     }
 }
+
 //produk dipilih di pesanan
 if(isset($_POST['addproduk'])){
     $idproduk = $_POST['idproduk'];
@@ -164,10 +198,18 @@ if(isset($_POST['barangmasuk'])){
     $idproduk = $_POST['idproduk'];
     $qty = $_POST['qty'];
 
+    // //cari tahu stock sekarang berapa
+    $caristock = mysqli_query($conn, "select * from produk where idproduk='$idproduk'");
+    $caristock2 = mysqli_fetch_array($caristock);
+    $stocksekarang = $caristock2['stock'];
+
+    //hitung
+    $newstock = $stocksekarang+$qty;
 
     $insertb = mysqli_query($conn, "insert into masuk (idproduk, qty) values ('$idproduk', '$qty')"); 
-
-    if($insertb){
+    $updatetb = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idproduk'");
+    
+    if($insertb&&$updatetb){
         header('location:masuk.php');
     }
     else {
@@ -177,6 +219,7 @@ if(isset($_POST['barangmasuk'])){
         </script> '; 
     }
 }
+
     
 
 //Hapus Produk Pesanan view.php
@@ -212,39 +255,187 @@ if(isset($_POST['hapusprodukpesanan'])) {
         </script> '; 
     }
 }
-
-//edit pelanggan
-if (isset($_POST['editpelanggan'])) {
-    $np = $_POST['namapelanggan'];
-    $nt = $_POST['notelp'];
-    $a = $_POST['alamat'];
-    $id = $_POST['idpl'];
-
-    $query = mysqli_query($conn,"update pelanggan set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$idpl'");
-
-    if($query){
-        header('location:pelanggan.php');
-    } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
-    }
-}
-
-if(isset($_POST['hapuspelanggan'])){
-    $idpl = $_POST['idpl'];
-    
-    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idp' ");
-
-    if($query){
-        header('location:pelanggan.php');
-    } else {
-        echo ' 
-        <script>alert("Gagal"); 
-        window.location.href="pelanggan.php" 
-        </script> '; 
-    }
-}
  
+//Mengubah data barang masuk
+if(isset($_POST['editdatabarangmasuk'])){
+    $qty = $_POST['qty'];
+    $idm = $_POST['idm']; //id masuk
+    $idp = $_POST['idp']; //id produk
+
+    //mencari tau qty sekarang brp
+    $caritahu = mysqli_query($conn, "select * from masuk where idmasuk='$idm'");
+    $caritahu2 = mysqli_fetch_array($caritahu);
+    $qtysekarang = $caritahu2['qty'];
+
+    //cari tahu stock sekarang berapa
+    $caristock = mysqli_query($conn, "select * from produk where idproduk='$idp'");
+    $caristock2 = mysqli_fetch_array($caristock);
+    $stocksekarang = $caristock2['stock'];
+
+    if($qty >= $qtysekarang){
+        //kalau inputan user lebih besar daripada qty yang tercatat
+        //hitung selisih
+        $selisih = $qty-$qtysekarang;
+        $newstock = $stocksekarang+$selisih;
+
+        $query1 = mysqli_query($conn, "update masuk set qty='$qty' where idmasuk='$idm'");
+        $query2 = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idp'");
+        
+        if($query1&&$query2){
+            header('location:masuk.php');
+        } else {
+            echo '
+            <script>alert("Gagal");
+            window.location.href="masuk.php"
+            </script>
+            '; 
+        }
+    } else {
+        //kalau lebih kecil
+        //hitung selisih
+        $selisih = $qtysekarang-$qty;
+        $newstock = $stocksekarang-$selisih;
+
+        $query1 = mysqli_query($conn, "update masuk set qty='$qty' where idmasuk='$idm'");
+        $query2 = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idp'");
+    
+    if($query1&&$query2){
+        header('location:masuk.php');
+    } else {
+        echo '
+        <script>alert("Gagal");
+        window.location.href="masuk.php"
+        </script>
+        '; 
+    }
+    }
+}
+
+//Hapus data barang masuk
+if(isset($_POST['hapuspelanggan'])){
+    $idm = $_POST['idm'];
+    $idp = $_POST['idp'];
+    
+    //mencari tau qty sekarang brp
+    $caritahu = mysqli_query($conn, "select * from masuk where idmasuk='$idm'");
+    $caritahu2 = mysqli_fetch_array($caritahu);
+    $qtysekarang = $caritahu2['qty'];
+
+    //cari tahu stock sekarang berapa
+    $caristock = mysqli_query($conn, "select * from produk where idproduk='$idp'");
+    $caristock2 = mysqli_fetch_array($caristock);
+    $stocksekarang = $caristock2['stock'];    
+
+    //hitung selisih
+    $newstock = $stocksekarang-$qtysekarang;
+
+    $query1 = mysqli_query($conn, "delete from masuk where idmasuk='$idm'");
+    $query2 = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idp'");
+    
+    if($query1&&$query2){
+        header('location:masuk.php');
+    } else {
+        echo '
+        <script>alert("Gagal");
+        window.location.href="masuk.php"
+        </script>
+        '; 
+    }    
+}
+
+//hapus order
+if(isset($_POST['hapusorder'])){
+    $ido = $_POST['ido']; //id order
+
+    $cekdata = mysqli_query($conn, "select * from detailpesanan dp where idpesanan='$ido'");
+
+    while($ok=mysqli_fetch_array($cekdata)){
+        //balikin stock
+        $qty =$ok['qty'];
+        $idproduk = $ok ['idproduk'];
+        $iddp = $ok['iddetailpesanan'];
+
+        //cari tahu stock sekarang berapa
+        $caristock = mysqli_query($conn, "select * from produk where idproduk='$idproduk'");
+        $caristock2 = mysqli_fetch_array($caristock);
+        $stocksekarang = $caristock2['stock'];  
+
+        $newstock = $stocksekarang+$qty;
+
+        $queryupdate = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idproduk'");
+        
+        //hapus data
+        $queryupdate = mysqli_query($conn, "delete from detailpesanan where iddetailpesanan='$iddp'");
+        
+
+    }
+  
+    $query = mysqli_query($conn, "delete from pesanan where idorder='$ido'");
+
+    if($queryupdate && $querydelete &&$query){
+        header('location:index.php');
+    } else {
+        echo '
+        <script>alert("Gagal");
+        window.location.href="index.php"
+        </script>
+        '; 
+    }
+}
+
+//Mengubah data detail pesanan
+if(isset($_POST['editdetailpesanan'])){
+    $qty = $_POST['qty'];
+    $iddp = $_POST['iddp']; //id masuk
+    $idpr = $_POST['idpr']; //id produk
+    $idp = $_POST['idp']; //id pesanan
+
+    //mencari tau qty sekarang brp
+    $caritahu = mysqli_query($conn, "select * from detailpesanan where iddetailpesanan='$iddp'");
+    $caritahu2 = mysqli_fetch_array($caritahu);
+    $qtysekarang = $caritahu2['qty'];
+
+    //cari tahu stock sekarang berapa
+    $caristock = mysqli_query($conn, "select * from produk where idproduk='$idpr'");
+    $caristock2 = mysqli_fetch_array($caristock);
+    $stocksekarang = $caristock2['stock'];
+
+    if($qty >= $qtysekarang){
+        //kalau inputan user lebih besar daripada qty yang tercatat
+        //hitung selisih
+        $selisih = $qty-$qtysekarang;
+        $newstock = $stocksekarang-$selisih;
+
+        $query1 = mysqli_query($conn, "update detailpesanan set qty='$qty' where iddetailpesanan='$iddp'");
+        $query2 = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idpr'");
+        
+        if($query1&&$query2){
+            header('location:view.php?idp='.$idp);
+        } else {
+            echo '
+            <script>alert("Gagal");
+            window.location.href="view.php?idp='.$idp.'"
+            </script>
+            '; 
+        }
+    } else {
+        //kalau lebih kecil
+        //hitung selisih
+        $selisih = $qtysekarang-$qty;
+        $newstock = $stocksekarang+$selisih;
+
+        $query1 = mysqli_query($conn, "update detailpesanan set qty='$qty' where iddetailpesanan='$iddp'");
+        $query2 = mysqli_query($conn, "update produk set stock='$newstock' where idproduk='$idp'");
+    
+    if($query1&&$query2){
+        header('location:view.php?idp='.$idp);
+    } else {
+        echo '
+        <script>alert("Gagal");
+        window.location.href="view.php?idp='.$idp.'"
+        </script>
+        '; 
+    }
+    }
+}
 ?>
