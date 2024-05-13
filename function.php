@@ -212,5 +212,39 @@ if(isset($_POST['hapusprodukpesanan'])) {
         </script> '; 
     }
 }
+
+//edit pelanggan
+if (isset($_POST['editpelanggan'])) {
+    $np = $_POST['namapelanggan'];
+    $nt = $_POST['notelp'];
+    $a = $_POST['alamat'];
+    $id = $_POST['idpl'];
+
+    $query = mysqli_query($conn,"update pelanggan set namapelanggan = '$np', notelp = '$nt', alamat = '$a' where idpelanggan = '$idpl'");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="pelanggan.php" 
+        </script> '; 
+    }
+}
+
+if(isset($_POST['hapuspelanggan'])){
+    $idpl = $_POST['idpl'];
+    
+    $query = mysqli_query($conn, "delete from pelanggan where idpelanggan = '$idp' ");
+
+    if($query){
+        header('location:pelanggan.php');
+    } else {
+        echo ' 
+        <script>alert("Gagal"); 
+        window.location.href="pelanggan.php" 
+        </script> '; 
+    }
+}
  
 ?>
