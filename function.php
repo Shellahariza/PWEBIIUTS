@@ -308,7 +308,7 @@ if(isset($_POST['editdatabarangmasuk'])){
 }
 
 //Hapus data barang masuk
-if(isset($_POST['hapuspelanggan'])){
+if(isset($_POST['hapusdatabarangmasuk'])){
     $idm = $_POST['idm'];
     $idp = $_POST['idp'];
     
