@@ -135,7 +135,7 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                                         <h4 class="modal-title">Ubah <?=$namapelanggan;?></h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
-                                                    <form method="post" action="ceklogin.php">
+                                                    <form method="post" action="function.php">
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
                                                             <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Pelanggan" value="<?=$namapelanggan;?>">
