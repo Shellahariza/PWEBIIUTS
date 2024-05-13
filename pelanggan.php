@@ -125,7 +125,8 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                         </td>
                                         </tr>
 
-                                       <!-- ModalEdit untuk setiap produk -->
+                                       
+                                      <!-- ModalEdit untuk setiap pelanggan -->
                                         <div class="modal fade" id="edit<?=$idpelanggan;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -134,13 +135,13 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                                         <h4 class="modal-title">Ubah <?=$namapelanggan;?></h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
-                                                    <form method="post">
+                                                    <form method="post" action="ceklogin.php">
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                            <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Produk" value="<?=$namapelanggan;?>">
-                                                            <input type="text" name="notelp" class="form-control mt-2" placeholder="No Telp" value="<?=$notelp;?>">
-                                                            <input type="num" name="alamat" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
-                                                            <input type="hidden" name="idpl" value="<?=$idpl;?>">
+                                                            <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Pelanggan" value="<?=$namapelanggan;?>">
+                                                            <input type="text" name="notelp" class="form-control mt-2" placeholder="No Telepon" value="<?=$notelp;?>">
+                                                            <input type="text" name="alamat" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
+                                                            <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>"> <!-- Input tersembunyi untuk ID pelanggan -->
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
@@ -152,32 +153,29 @@ $h2 = mysqli_num_rows($h1); //jumlah pelanggan
                                             </div>
                                         </div>
 
+
                                                                             
-                                                        <!-- Modal Delete -->
-                                                        <div class="modal fade" id="delete<?=$idpelanggan;?>">
-                                                        <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                                                    
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
+                                        <!-- Modal Delete -->
+                                        <div class="modal fade" id="delete<?=$idpelanggan;?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
                                                         <h4 class="modal-title">Hapus <?=$namapelanggan;?></h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        </div>
-                                                                                        
-                                                        <form method="post">
-
+                                                    </div>
+                                                    <form method="post" action="function.php">
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                        Apakah Yakin Ingin Dihapus? 
-                                                        <input type = "hidden" name = "idpl" value = "<?=$idpl;?>" ?>
+                                                            <p>Apakah Anda yakin ingin menghapus pelanggan ini?</p>
+                                                            <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>">
                                                         </div>
-                                                                                        
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger" name="hapuspelanggan">Hapus</button>
-                                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tidak</button>
+                                                            <button type="submit" class="btn btn-danger" name="hapuspelanggan">Hapus</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                                         </div>
-                                                    </form>                           
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
